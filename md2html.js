@@ -12,7 +12,11 @@ function md2html(filePath, cb) {
       cb(err);
       return;
     }
-    const content = marked(mdString);
+    const content = marked(mdString, {
+      highlight: function (code) {
+        return require('highlight.js').highlightAuto(code).value;
+      }
+    });
     const renderer = ECT({ root : __dirname });
     const data = { title: filePath, content : content, dirname : __dirname };
     const html = renderer.render('template.ect', data);

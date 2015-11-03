@@ -29,12 +29,11 @@ function showFileSaveDialog() {
 }
 
 function saveAsPDF(win, path, cb) {
-  win.webContents.printToPDF({}, function(error, data) {
+  win.webContents.printToPDF({ printBackground: true }, function(error, data) {
     if (error) {
       cb(error);
       return;
     }
-    console.log(path);
     fs.writeFile(path, data, cb);
   })
 }
