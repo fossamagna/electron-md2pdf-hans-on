@@ -12,13 +12,19 @@ function md2html(filePath, cb) {
       cb(err);
       return;
     }
+    const markedRenderer = new marked.Renderer();
+    markedRenderer.image = function(href, title, text) {
+      const imgAbsolutePath = path.resolve(path.dirname(filePath), href);
+      return marked.Renderer.prototype.image.call(this, imgAbsolutePath, title, text);
+    }
     const content = marked(mdString, {
+      renderer: markedRenderer,
       highlight: function (code) {
         return require('highlight.js').highlightAuto(code).value;
       }
     });
-    const renderer = ECT({ root : __dirname });
     const data = { title: filePath, content : content, dirname : __dirname };
+    const renderer = ECT({ root : __dirname });
     const html = renderer.render('template.ect', data);
     cb(null, html);
   });

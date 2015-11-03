@@ -1,7 +1,7 @@
 {
   "name": "electron-md2pdf",
   "productName": "ElectronMd2pdf",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "My splendid app",
   "license": "MIT",
   "repository": "fossamagna/electron-md2pdf-hands-on",
