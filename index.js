@@ -12,36 +12,36 @@ require('electron-debug')();
 let mainWindow;
 
 function onClosed() {
-	// dereference the window
-	// for multiple windows store them in an array
-	mainWindow = null;
+  // dereference the window
+  // for multiple windows store them in an array
+  mainWindow = null;
 }
 
 function createMainWindow() {
-	const win = new BrowserWindow({
-		width: 600,
-		height: 400
-	});
+  const win = new BrowserWindow({
+    width: 600,
+    height: 400
+  });
 
-	win.loadUrl(`file://${__dirname}/index.html`);
-	win.on('closed', onClosed);
+  win.loadUrl(`file://${__dirname}/index.html`);
+  win.on('closed', onClosed);
 
-	return win;
+  return win;
 }
 
 app.on('window-all-closed', () => {
-	if (process.platform !== 'darwin') {
-		app.quit();
-	}
+  if (process.platform !== 'darwin') {
+    app.quit();
+  }
 });
 
 app.on('activate-with-no-open-windows', () => {
-	if (!mainWindow) {
-		mainWindow = createMainWindow();
-	}
+  if (!mainWindow) {
+    mainWindow = createMainWindow();
+  }
 });
 
 app.on('ready', () => {
-	mainWindow = createMainWindow();
-	require('./menu');
+  mainWindow = createMainWindow();
+  require('./menu');
 });

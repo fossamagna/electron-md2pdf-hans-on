@@ -10,8 +10,8 @@ function showFileOpenDialog() {
     {
       properties: ['openFile'],
       filters: [
-        { name: 'Markdown', extensions: ['md'] },
-        { name: 'All Files', extensions: ['*'] }
+        {name: 'Markdown', extensions: ['md']},
+        {name: 'All Files', extensions: ['*']}
       ]
     }
   );
@@ -21,23 +21,22 @@ function showFileSaveDialog() {
   return dialog.showSaveDialog(
     {
       filters: [
-        { name: 'PDF', extensions: ['pdf'] },
-        { name: 'All Files', extensions: ['*'] }
+        {name: 'PDF', extensions: ['pdf']},
+        {name: 'All Files', extensions: ['*']}
       ]
     }
   );
 }
 
 function saveAsPDF(win, path, cb) {
-  win.webContents.printToPDF({ printBackground: true }, function(error, data) {
+  win.webContents.printToPDF({printBackground: true}, (error, data) => {
     if (error) {
       cb(error);
       return;
     }
     fs.writeFile(path, data, cb);
-  })
+  });
 }
-
 
 const template = [
   {
@@ -46,14 +45,14 @@ const template = [
       {
         label: 'Open',
         accelerator: 'Cmd+O',
-        click: function(item, focusedWindow) {
+        click: function (item, focusedWindow) {
           const file = showFileOpenDialog();
           if (file) {
             md2html.toHtmlFile(file[0], (err, htmlFilePath) => {
               if (err) {
                 throw err;
               }
-              focusedWindow.loadUrl(`file://` + htmlFilePath);
+              focusedWindow.loadUrl(`file://${htmlFilePath}`);
             });
           }
         }
@@ -61,14 +60,14 @@ const template = [
       {
         label: 'SaveAsPDF',
         accelerator: 'Shift+Cmd+O',
-        click: function(item, focusedWindow) {
+        click: function (item, focusedWindow) {
           const file = showFileSaveDialog();
           if (file) {
-            saveAsPDF(focusedWindow, file, (err) => {
+            saveAsPDF(focusedWindow, file, err => {
               if (err) {
                 dialog.showErrorBox('Save Error', err.toString());
               }
-            })
+            });
           }
         }
       }
@@ -80,7 +79,7 @@ const template = [
       {
         label: 'Reload',
         accelerator: 'CmdOrCtrl+R',
-        click: function(item, focusedWindow) {
+        click: function (item, focusedWindow) {
           if (focusedWindow) {
             focusedWindow.reload();
           }
@@ -88,14 +87,13 @@ const template = [
       },
       {
         label: 'Toggle Full Screen',
-        accelerator: (function() {
-          if (process.platform == 'darwin') {
+        accelerator: (function () {
+          if (process.platform === 'darwin') {
             return 'Ctrl+Command+F';
-          } else {
-            return 'F11';
           }
+          return 'F11';
         })(),
-        click: function(item, focusedWindow) {
+        click: function (item, focusedWindow) {
           if (focusedWindow) {
             focusedWindow.setFullScreen(!focusedWindow.isFullScreen());
           }
@@ -103,19 +101,18 @@ const template = [
       },
       {
         label: 'Toggle Developer Tools',
-        accelerator: (function() {
-          if (process.platform == 'darwin') {
+        accelerator: (function () {
+          if (process.platform === 'darwin') {
             return 'Alt+Command+I';
-          } else {
-            return 'Ctrl+Shift+I';
           }
+          return 'Ctrl+Shift+I';
         })(),
-        click: function(item, focusedWindow) {
+        click: function (item, focusedWindow) {
           if (focusedWindow) {
             focusedWindow.toggleDevTools();
           }
         }
-      },
+      }
     ]
   },
   {
@@ -131,7 +128,7 @@ const template = [
         label: 'Close',
         accelerator: 'CmdOrCtrl+W',
         role: 'close'
-      },
+      }
     ]
   },
   {
@@ -140,20 +137,22 @@ const template = [
     submenu: [
       {
         label: 'Learn More',
-        click: function() { require('shell').openExternal('http://electron.atom.io') }
-      },
+        click: function () {
+          require('shell').openExternal('http://electron.atom.io');
+        }
+      }
     ]
-  },
+  }
 ];
 
-if (process.platform == 'darwin') {
+if (process.platform === 'darwin') {
   const app = require('app');
   const name = app.getName();
   template.unshift({
     label: name,
     submenu: [
       {
-        label: 'About ' + name,
+        label: `About ${name}`,
         role: 'about'
       },
       {
@@ -168,7 +167,7 @@ if (process.platform == 'darwin') {
         type: 'separator'
       },
       {
-        label: 'Hide ' + name,
+        label: `Hide ${name}`,
         accelerator: 'Command+H',
         role: 'hide'
       },
@@ -187,8 +186,10 @@ if (process.platform == 'darwin') {
       {
         label: 'Quit',
         accelerator: 'Command+Q',
-        click: function() { app.quit(); }
-      },
+        click: function () {
+          app.quit();
+        }
+      }
     ]
   });
   // Window menu.

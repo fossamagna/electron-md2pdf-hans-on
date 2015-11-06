@@ -44,6 +44,11 @@
     "envs": [
       "node",
       "browser"
-    ]
+    ],
+    "space": 2,
+    "rules": {
+      "prefer-reflect": 0,
+      "babel/object-shorthand": 0
+    }
   }
 }
