@@ -147,7 +147,8 @@ const template = [
 ];
 
 if (process.platform == 'darwin') {
-  var name = require('app').getName();
+  const app = require('app');
+  const name = app.getName();
   template.unshift({
     label: name,
     submenu: [
