@@ -13,7 +13,7 @@
   "engines": {
     "node": ">=4"
   },
-  "electronVersion": "0.33.3",
+  "electronVersion": "0.34.2",
   "scripts": {
     "test": "xo",
     "start": "electron .",
@@ -29,7 +29,7 @@
   ],
   "dependencies": {
     "ect": "^0.5.9",
-    "electron-debug": "^0.2.1",
+    "electron-debug": "^0.3.2",
     "github-markdown-css": "^2.1.0",
     "highlight.js": "^8.9.1",
     "marked": "^0.3.5"
@@ -37,13 +37,18 @@
   "devDependencies": {
     "electron-packager": "^5.0.0",
     "electron-prebuilt": "^0.34.0",
-    "xo": "^0.9.0"
+    "xo": "^0.10.1"
   },
   "xo": {
     "esnext": true,
     "envs": [
       "node",
       "browser"
-    ]
+    ],
+    "space": 2,
+    "rules": {
+      "prefer-reflect": 0,
+      "babel/object-shorthand": 0
+    }
   }
 }
