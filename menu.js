@@ -1,7 +1,6 @@
 'use strict';
 
-const Menu = require('menu');
-const dialog = require('dialog');
+const {app, Menu, dialog, shell} = require('electron');
 const md2html = require('./md2html');
 const fs = require('fs');
 
@@ -52,7 +51,7 @@ const template = [
               if (err) {
                 throw err;
               }
-              focusedWindow.loadUrl(`file://${htmlFilePath}`);
+              focusedWindow.loadURL(`file://${htmlFilePath}`);
             });
           }
         }
@@ -138,7 +137,7 @@ const template = [
       {
         label: 'Learn More',
         click: function () {
-          require('shell').openExternal('http://electron.atom.io');
+          shell.openExternal('http://electron.atom.io');
         }
       }
     ]
@@ -146,7 +145,6 @@ const template = [
 ];
 
 if (process.platform === 'darwin') {
-  const app = require('app');
   const name = app.getName();
   template.unshift({
     label: name,
