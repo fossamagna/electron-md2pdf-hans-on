@@ -37,7 +37,7 @@
   "devDependencies": {
     "electron-packager": "^8.5.0",
     "electron": "^1.4.14",
-    "xo": "^0.10.1"
+    "xo": "^0.17.1"
   },
   "xo": {
     "esnext": true,
@@ -48,7 +48,8 @@
     "space": 2,
     "rules": {
       "prefer-reflect": 0,
-      "babel/object-shorthand": 0
+      "object-shorthand": 0,
+      "import/no-unassigned-import": 0
     }
   }
 }

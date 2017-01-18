@@ -3,9 +3,9 @@
 const fs = require('fs');
 const path = require('path');
 const os = require('os');
+const url = require('url');
 const marked = require('marked');
 const ect = require('ect');
-const url = require('url');
 
 function md2html(filePath, cb) {
   fs.readFile(filePath, 'utf8', (err, mdString) => {

@@ -1,8 +1,8 @@
 'use strict';
 
 const {app, Menu, dialog, shell} = require('electron');
-const md2html = require('./md2html');
 const fs = require('fs');
+const md2html = require('./md2html');
 
 function showFileOpenDialog() {
   return dialog.showOpenDialog(
