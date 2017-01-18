@@ -1,12 +1,5 @@
 'use strict';
-const app = require('app');
-const BrowserWindow = require('browser-window');
-
-// report crashes to the Electron project
-require('crash-reporter').start();
-
-// adds debug features like hotkeys for triggering dev tools and reload
-require('electron-debug')();
+const {app, BrowserWindow} = require('electron');
 
 // prevent window being garbage collected
 let mainWindow;
@@ -23,7 +16,7 @@ function createMainWindow() {
     height: 400
   });
 
-  win.loadUrl(`file://${__dirname}/index.html`);
+  win.loadURL(`file://${__dirname}/index.html`);
   win.on('closed', onClosed);
 
   return win;
@@ -35,7 +28,7 @@ app.on('window-all-closed', () => {
   }
 });
 
-app.on('activate-with-no-open-windows', () => {
+app.on('activate', () => {
   if (!mainWindow) {
     mainWindow = createMainWindow();
   }
