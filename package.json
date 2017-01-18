@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "description": "Markdown to PDF Converter",
   "license": "MIT",
-  "repository": "fossamagna/electron-md2pdf-hands-on",
+  "repository": "fossamagna/electron-md2pdf",
   "author": {
     "name": "MURAKAMI Masahiko",
     "email": "fossamagna2@gmail.com",

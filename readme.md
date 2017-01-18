@@ -2,7 +2,7 @@
 
 > Electron Markdown Preview and PDF Converter.
 
-[![Circle CI](https://circleci.com/gh/fossamagna/electron-md2pdf-hands-on.svg?style=svg)](https://circleci.com/gh/fossamagna/electron-md2pdf-hands-on)
+[![Circle CI](https://circleci.com/gh/fossamagna/electron-md2pdf.svg?style=svg)](https://circleci.com/gh/fossamagna/electron-md2pdf)
 
 ## Dev
 
