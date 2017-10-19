@@ -49,7 +49,8 @@
     "rules": {
       "prefer-reflect": 0,
       "object-shorthand": 0,
-      "import/no-unassigned-import": 0
+      "import/no-unassigned-import": 0,
+      "capitalized-comments": 0
     }
   }
 }
