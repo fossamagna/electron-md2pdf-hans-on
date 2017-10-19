@@ -1,5 +1,7 @@
 # electron-md2pdf
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/fossamagna/electron-md2pdf.svg)](https://greenkeeper.io/)
+
 > Electron Markdown Preview and PDF Converter.
 
 [![Circle CI](https://circleci.com/gh/fossamagna/electron-md2pdf.svg?style=svg)](https://circleci.com/gh/fossamagna/electron-md2pdf)
